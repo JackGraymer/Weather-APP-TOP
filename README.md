@@ -3,7 +3,7 @@
 ### Weather app with JavaScript and online API
 
 ---
-#### This project aims to use the knowledge on connecting APIs and asynchronous functions.
+#### This project aims to use the knowledge on connecting to APIs and using asynchronous functions.
 
 <details>
 <summary>Instructions</summary>
