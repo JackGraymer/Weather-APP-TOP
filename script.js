@@ -1,37 +1,31 @@
 console.log('working test')
 
 const apiKey = '9bd11661b685830edd9f9e956ec5786a';
-const city = 'Washington';
-let cityInfo = ''
+let city = 'Washington';
+let cityData = ''
 async function weather (){
     try {
-        let response = await fetch('http://api.openweathermap.org/data/2.5/weather?q=London&APPID=' + apiKey, {
+        let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=metric`, {
         mode: 'cors'
         })
-        let cityData = await response.json()
-        let cityCoords = cityData.coord
-        //console.log('coordinates are ', cityData.coord)
-        try {
-            let response2 = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityCoords.lat}&lon=${cityCoords.lon}&appid=${apiKey}`, {
-                mode: 'cors'
-            })
-            let cityData2 = await response2.json()
-            /* console.log(cityData2)
-            cityInfo =  await cityData2
-            console.log(cityInfo) */
-            return cityData2
-        } catch (err) {
-            console.log(err)
-        }
-       
+        cityInfo = await response.json()        
+        return cityInfo
+        
     } catch (err) {
         console.log('error on coordinate api call',err)
     }
 }
 
-async function populateDom(){
-    cityInfo = await weather()
-    
 
+let button = document.querySelector('#button')
+button.addEventListener('click', () => {
+    city = document.querySelector('#input').value
+    console.log(city)
+    populateDom()
+})
+
+async function populateDom(){
+    cityData = await weather()
+    console.log(cityData)
+    
 }
-populateDom()
