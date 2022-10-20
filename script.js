@@ -8,11 +8,12 @@ async function weather (){
         let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=metric`, {
         mode: 'cors'
         })
-        cityInfo = await response.json()        
-        return cityInfo
+        cityData = await response.json() 
+        return cityData
         
     } catch (err) {
-        console.log('error on coordinate api call',err)
+        console.log('error on coordinate api call')
+        return
     }
 }
 
@@ -26,6 +27,10 @@ button.addEventListener('click', () => {
 
 async function populateDom(){
     cityData = await weather()
+    if(cityData.cod > 299){
+        document.querySelector('#title').textContent = 'City not found!'
+        return
+    }
     console.log(cityData)
     document.querySelector('#title').textContent = `${cityData.name}, ${cityData.sys.country}`;
     document.querySelector('.weather').textContent = `${cityData.weather[0].main}`;
