@@ -5,7 +5,7 @@ let city = 'Zurich';
 let cityData = ''
 async function weather (){
     try {
-        let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=metric`, {
+        let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=metric`, {
         mode: 'cors'
         })
         cityData = await response.json() 
