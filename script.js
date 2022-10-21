@@ -18,11 +18,14 @@ async function weather (){
 }
 
 
-let button = document.querySelector('#button')
-button.addEventListener('click', () => {
-    city = document.querySelector('#input').value
+let button = document.querySelector('input')
+button.addEventListener('keydown', () => {
+    if(event.key ==='Enter'){
+        city = document.querySelector('#input').value
     console.log(city)
     populateDom()
+    }
+    
 })
 
 async function populateDom(){
@@ -34,8 +37,8 @@ async function populateDom(){
     console.log(cityData)
     document.querySelector('#title').textContent = `${cityData.name}, ${cityData.sys.country}`;
     document.querySelector('.weather').textContent = `${cityData.weather[0].main}`;
-    document.querySelector('.temperature>h2').textContent = `${cityData.main.temp.toFixed(1)} °C`
-    document.querySelector('.temperature>h4').textContent = `${cityData.main.temp_min.toFixed(1)}° - ${cityData.main.temp_max.toFixed(1)}°`
+    document.querySelector('.temperature>h2').textContent = `${cityData.main.temp.toFixed(1)}°C`
+    document.querySelector('.temperature>h4').textContent = `${cityData.main.temp_min.toFixed(1)}°C - ${cityData.main.temp_max.toFixed(1)}°C`
     document.querySelector('.description').textContent = `${cityData.weather[0].description[0].toUpperCase()}${cityData.weather[0].description.slice(1)}`
     document.querySelector('.humidity').textContent = `Humidity ${cityData.main.humidity}%`
     document.querySelector('.wind').textContent = `Wind ${cityData.wind.speed.toFixed(1)} Km/h`

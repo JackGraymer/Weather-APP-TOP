@@ -1,21 +1,62 @@
+*{
+    box-sizing: border-box;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url(/src/OpenSans-VariableFont_wdth\,wght.ttf);
+}
 
 html, body{
-    color: rgb(188, 206, 206);
+    color: rgb(0, 0, 0);
     height: 100%;
     width: 100%;
     margin: 0;
-    background-color: rgb(32, 32, 32);
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(./src/mountain-moon-abstraction.jpg);
+    background-size:cover;
+    background-position: center;
 }
 
 .main{
+    padding: 1em;
     height: 100%;
-    width: 50%;
-    background-color: rgba(250, 235, 215, 0.329);
+    width: clamp(800px, 1024px, 100%);
+    background-color: rgba(250, 235, 215, 0.096);
+    display: grid;
+    grid-template-rows: 5rem 12fr;
+    justify-content: center;
+}
+
+.header{
+    position: sticky;
+    margin: 1em;
+    width: 100%;
+}
+
+input{
+    font-size: 14pt;
+    border: none;
+    box-shadow: inset;
+    outline: none;
+}
+
+.card{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    gap: 1em;
+}
+
+.card>div, header>input{
+    margin: 0;
+    padding: 0.5em;
+    background-color: rgba(255, 255, 255, 0.329);
+    border-radius: 0.5rem;
+}
+
+#title, .weather{
+    font-size: 14pt;
 }
